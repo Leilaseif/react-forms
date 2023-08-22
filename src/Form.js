@@ -6,10 +6,16 @@ export default function Form() {
     lastName: "",
   });
 
-  function eventhandeler(event) {
-    setformData(event.target.value);
+  function eventhandler(event) {
+    setformData((prevSetFormData) => {
+      return {
+        ...prevSetFormData,
+        [event.target.name]: event.target.value,
+      };
+    });
+    console.log(formData);
   }
-  console.log(firstName, lastName);
+
   return (
     <div>
       <form>
@@ -18,7 +24,7 @@ export default function Form() {
           type="firstName"
           placeholder="firsName"
           name="firstName"
-          onChange={eventhandeler}
+          onChange={eventhandler}
         />
 
         <input
@@ -26,7 +32,7 @@ export default function Form() {
           type="lastName"
           placeholder="lastName"
           name="lastName"
-          onChange={eventhandeler}
+          onChange={eventhandler}
         />
       </form>
     </div>
