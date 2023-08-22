@@ -4,21 +4,31 @@ export default function Form() {
   const [formData, setformData] = React.useState({
     firstName: "",
     lastName: "",
+    password: "",
+    reWritePassword: "",
+    getNews: true,
   });
 
   function eventhandler(event) {
+    const { name, value, type, checked } = event.target;
     setformData((prevSetFormData) => {
       return {
         ...prevSetFormData,
-        [event.target.name]: event.target.value,
+        [name]: type === "checkbox" ? checked : value,
       };
     });
-    console.log(formData);
+  }
+  function handleSubmit(event) {
+    event.preventDefault();
+    formData.password === formData.reWritePassword
+      ? console.log("thats it!!")
+      : console.log("wrong password");
+    formData.getNews === true ? console.log("thanks") : console.log("okk");
   }
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           className="firstName"
           type="firstName"
@@ -34,6 +44,32 @@ export default function Form() {
           name="lastName"
           onChange={eventhandler}
         />
+        <input
+          className="password"
+          type="password"
+          placeholder="password"
+          name="password"
+          onChange={eventhandler}
+        />
+        <input
+          className="reWritePassword"
+          type="reWritePassword"
+          placeholder="reWritePassword"
+          name="reWritePassword"
+          onChange={eventhandler}
+        />
+        <input
+          type="checkbox"
+          id="getNews"
+          name="getNews"
+          onChange={eventhandler}
+          checked={formData.getNews}
+        />
+
+        <label htmlFor="getNews">do you want to get the news? </label>
+        <br />
+        <br />
+        <button>submit</button>
       </form>
     </div>
   );
