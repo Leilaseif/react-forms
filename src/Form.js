@@ -27,10 +27,10 @@ export default function Form() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="form-container">
+      <form className="form" onSubmit={handleSubmit}>
         <input
-          className="firstName"
+          className="form--input"
           type="firstName"
           placeholder="firsName"
           name="firstName"
@@ -38,38 +38,42 @@ export default function Form() {
         />
 
         <input
-          className="lastName"
+          className="form--input"
           type="lastName"
           placeholder="lastName"
           name="lastName"
           onChange={eventhandler}
         />
         <input
-          className="password"
+          className="form--input"
           type="password"
           placeholder="password"
           name="password"
           onChange={eventhandler}
         />
         <input
-          className="reWritePassword"
+          className="form--input"
           type="reWritePassword"
           placeholder="reWritePassword"
           name="reWritePassword"
           onChange={eventhandler}
         />
-        <input
-          type="checkbox"
-          id="getNews"
-          name="getNews"
-          onChange={eventhandler}
-          checked={formData.getNews}
-        />
+        <br />
+        <br />
+        <div className="form--marketing">
+          <input
+            type="checkbox"
+            id="getNews"
+            name="getNews"
+            onChange={eventhandler}
+            checked={formData.getNews}
+          />
 
-        <label htmlFor="getNews">do you want to get the news? </label>
+          <label htmlFor="getNews">do you want to get the news? </label>
+        </div>
         <br />
         <br />
-        <button>submit</button>
+        <button className="form--submit">submit</button>
       </form>
     </div>
   );
